@@ -7,10 +7,10 @@
     </div>
     <div class="heading">
       <h2>Дети (макс. 5)</h2>
-      <Button text="Добавить ребенка" outline icon />
+      <Button text="Добавить ребенка" outline icon @click="store.commit(MutationType.AddChildren)" />
     </div>
     <div class="inputs__childrens">
-      <div class="inputs__childrens__child">
+      <div class="inputs__childrens__child" v-for="child in childrens" :key="child.id">
         <Input id="name" label="Имя" placeholder="Введите имя" v-model="name" />
         <Input id="name" label="Возраст" placeholder="Введите возраст" v-model="age" />
         <Button text="Удалить" transparent />
@@ -28,7 +28,7 @@ import { computed } from 'vue';
 import Button from '@/components/Button.vue';
 
 const store = useStore();
-
+const childrens = computed(() => store.state.childrens)
 const name = computed({
   get() {
     return store.state.parent.name;
@@ -41,7 +41,6 @@ const name = computed({
     store.commit(MutationType.UpdateParentForm, payload);
   }
 });
-
 const age = computed({
   get() {
     return store.state.parent.age;
@@ -54,7 +53,6 @@ const age = computed({
     store.commit(MutationType.UpdateParentForm, payload);
   }
 });
-
 </script>
 
 <style scoped lang="scss">

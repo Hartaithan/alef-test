@@ -10,6 +10,7 @@ import {
 export const mutations: MutationTree<State> & Mutations = {
   [MutationType.AddChildren](state) {
     const newChild: IChildren = {
+      id: state.childrens.length + 1,
       name: "",
       age: "",
     };

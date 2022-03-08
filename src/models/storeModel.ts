@@ -3,7 +3,7 @@ import { CommitOptions, Store as VuexStore } from "vuex";
 export type Store = Omit<VuexStore<State>, "commit"> & {
   commit<K extends keyof Mutations, P extends Parameters<Mutations[K]>[1]>(
     key: K,
-    payload: P,
+    payload?: P,
     options?: CommitOptions
   ): ReturnType<Mutations[K]>;
 };
@@ -14,6 +14,7 @@ export interface IParent {
 }
 
 export interface IChildren {
+  id: number;
   name: string;
   age: string;
 }
