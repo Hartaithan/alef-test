@@ -15,6 +15,7 @@
   position: relative;
   width: 100%;
   height: 76px;
+  min-height: 76px;
   display: flex;
   justify-content: center;
   align-items: center;

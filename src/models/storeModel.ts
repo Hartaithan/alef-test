@@ -25,8 +25,15 @@ export type State = {
 
 export enum MutationType {
   AddChildren = "ADD_CHILDREN",
+  UpdateForm = "UPDATE_FORM",
 }
 
 export type Mutations = {
   [MutationType.AddChildren](state: State): void;
+  [MutationType.UpdateForm](
+    state: State,
+    form: string,
+    input: string,
+    value: string
+  ): void;
 };

@@ -7,11 +7,14 @@ import {
 } from "../models/storeModel";
 
 export const mutations: MutationTree<State> & Mutations = {
-  [MutationType.AddChildren](state: State) {
+  [MutationType.AddChildren](state) {
     const newChild: IChildren = {
       name: "",
       age: null,
     };
     state.childrens.push(newChild);
+  },
+  [MutationType.UpdateForm](state, value) {
+    state.parent.name = value;
   },
 };

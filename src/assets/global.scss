@@ -13,3 +13,16 @@ body,
   height: 100%;
   width: 100%;
 }
+
+#app {
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  width: 616px;
+  max-width: 616px;
+  margin: 0 auto;
+  padding: 30px 0;
+}
