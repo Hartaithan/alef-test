@@ -7,7 +7,13 @@
     </div>
     <div class="heading">
       <h2>Дети (макс. 5)</h2>
-      <Button text="Добавить ребенка" outline icon @click="store.commit(MutationType.AddChildren)" />
+      <Button
+        text="Добавить ребенка"
+        outline
+        icon
+        @click="store.commit(MutationType.AddChildren)"
+        v-if="childrens.length < 5"
+      />
     </div>
     <div class="inputs__childrens">
       <div class="inputs__childrens__child" v-for="child in childrens" :key="child.id">
@@ -98,6 +104,7 @@ h2 {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 11px;
+  height: 44px;
   h2 {
     margin-bottom: 0;
   }
