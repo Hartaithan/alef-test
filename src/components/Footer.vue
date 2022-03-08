@@ -17,10 +17,10 @@
   justify-content: center;
   align-items: center;
   background: #fafafa;
-  a {
-    font-size: 13px;
-    line-height: 16px;
-    color: #000000;
-  }
+}
+a {
+  font-size: 13px;
+  line-height: 16px;
+  color: #000000;
 }
 </style>

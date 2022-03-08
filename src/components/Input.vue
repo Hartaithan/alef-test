@@ -50,21 +50,21 @@ const updateValue = (e: Event) => {
   border: 1px solid #f1f1f1;
   border-radius: 4px;
   padding: 8px 16px 6px 16px;
-  label {
-    font-size: 13px;
-    line-height: 16px;
-    display: flex;
-    color: rgba(17, 17, 17, 0.48);
-  }
-  input {
-    font-size: 14px;
-    line-height: 24px;
-    color: #111111;
-    border: none;
-    outline: none;
-  }
   &:not(:last-child) {
     margin-bottom: 10px;
   }
+}
+label {
+  font-size: 13px;
+  line-height: 16px;
+  display: flex;
+  color: rgba(17, 17, 17, 0.48);
+}
+input {
+  font-size: 14px;
+  line-height: 24px;
+  color: #111111;
+  border: none;
+  outline: none;
 }
 </style>

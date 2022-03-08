@@ -5,6 +5,8 @@
       <Input id="name" label="Имя" placeholder="Введите имя" v-model="name" />
       <Input id="name" label="Возраст" placeholder="Введите возраст" v-model="age" />
     </div>
+    <Button text="Добавить ребенка" icon outline />
+    <Button text="Сохранить" />
   </div>
 </template>
 
@@ -13,6 +15,7 @@ import Input from '@/components/Input.vue';
 import { MutationType } from '@/models/storeModel';
 import { useStore } from '@/store';
 import { computed } from 'vue';
+import Button from '@/components/Button.vue';
 
 const store = useStore();
 
