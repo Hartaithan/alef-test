@@ -19,6 +19,7 @@
   justify-content: center;
   align-items: center;
   box-shadow: 0px 1px 0px rgba(17, 17, 17, 0.1);
+  background: #ffffff;
   a {
     font-size: 14px;
     line-height: 24px;
