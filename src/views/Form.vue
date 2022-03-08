@@ -15,6 +15,7 @@
         <Input id="name" label="Возраст" placeholder="Введите возраст" v-model="age" />
         <Button text="Удалить" transparent />
       </div>
+      <p v-if="childrens.length === 0">Информация о детях еще не добавлена</p>
     </div>
     <Button text="Сохранить" />
   </div>
@@ -72,6 +73,11 @@ h2 {
   }
   &__childrens {
     margin-bottom: 30px;
+    & > p {
+      width: 100%;
+      text-align: center;
+      margin-top: 20px;
+    }
     &__child {
       display: flex;
       align-items: center;
