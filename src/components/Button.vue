@@ -1,5 +1,5 @@
 <template>
-  <button type="button" class="btn" :class="{ outline: outline }">
+  <button type="button" class="btn" :class="{ outline: outline, transparent: transparent }">
     <svg
       v-if="props.icon"
       width="24"
@@ -35,6 +35,10 @@ const props = defineProps({
     type: Boolean,
     required: false,
   },
+  transparent: {
+    type: Boolean,
+    required: false,
+  },
 });
 </script>
 
@@ -51,9 +55,15 @@ const props = defineProps({
   border-radius: 100px;
   color: #ffffff;
   cursor: pointer;
-  transition: 0.3s all ease-in;
+  transition: 0.3s all ease-in-out;
   &.outline {
     border: 2px solid #01a7fd;
+    background: transparent;
+    color: #01a7fd;
+  }
+  &.transparent {
+    height: fit-content;
+    padding: 0;
     background: transparent;
     color: #01a7fd;
   }

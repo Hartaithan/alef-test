@@ -1,11 +1,21 @@
 <template>
   <div class="form">
     <h2>Персональные данные</h2>
-    <div class="parent-inputs">
+    <div class="inputs__parent">
       <Input id="name" label="Имя" placeholder="Введите имя" v-model="name" />
       <Input id="name" label="Возраст" placeholder="Введите возраст" v-model="age" />
     </div>
-    <Button text="Добавить ребенка" icon outline />
+    <div class="heading">
+      <h2>Дети (макс. 5)</h2>
+      <Button text="Добавить ребенка" outline icon />
+    </div>
+    <div class="inputs__childrens">
+      <div class="inputs__childrens__child">
+        <Input id="name" label="Имя" placeholder="Введите имя" v-model="name" />
+        <Input id="name" label="Возраст" placeholder="Введите возраст" v-model="age" />
+        <Button text="Удалить" transparent />
+      </div>
+    </div>
     <Button text="Сохранить" />
   </div>
 </template>
@@ -57,5 +67,35 @@ h2 {
   line-height: 24px;
   color: #111111;
   margin-bottom: 20px;
+}
+.inputs {
+  &__parent {
+    margin-bottom: 33px;
+  }
+  &__childrens {
+    margin-bottom: 30px;
+    &__child {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
+      & > .input-group {
+        flex: 1;
+        margin-bottom: 0;
+        margin-right: 18px;
+      }
+    }
+  }
+}
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 11px;
+  h2 {
+    margin-bottom: 0;
+  }
 }
 </style>
