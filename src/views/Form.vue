@@ -1,6 +1,10 @@
 <template>
   <div class="form">
-    <Input id="name" placeholder="Введите имя" v-model="name" />
+    <h2>Персональные данные</h2>
+    <div class="parent-inputs">
+      <Input id="name" label="Имя" placeholder="Введите имя" v-model="name" />
+      <Input id="name" label="Возраст" placeholder="Введите возраст" v-model="age" />
+    </div>
   </div>
 </template>
 
@@ -17,7 +21,24 @@ const name = computed({
     return store.state.parent.name;
   },
   set(value: string) {
-    store.commit(MutationType.UpdateForm, value);
+    const payload = {
+      value,
+      input: 'name'
+    }
+    store.commit(MutationType.UpdateParentForm, payload);
+  }
+});
+
+const age = computed({
+  get() {
+    return store.state.parent.age;
+  },
+  set(value: string) {
+    const payload = {
+      value,
+      input: 'age'
+    }
+    store.commit(MutationType.UpdateParentForm, payload);
   }
 });
 
@@ -26,5 +47,12 @@ const name = computed({
 <style scoped lang="scss">
 .form {
   background: transparent;
+}
+h2 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #111111;
+  margin-bottom: 20px;
 }
 </style>

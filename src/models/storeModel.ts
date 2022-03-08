@@ -10,12 +10,12 @@ export type Store = Omit<VuexStore<State>, "commit"> & {
 
 export interface IParent {
   name: string;
-  age: number | null;
+  age: string;
 }
 
 export interface IChildren {
   name: string;
-  age: number | null;
+  age: string;
 }
 
 export type State = {
@@ -25,15 +25,18 @@ export type State = {
 
 export enum MutationType {
   AddChildren = "ADD_CHILDREN",
-  UpdateForm = "UPDATE_FORM",
+  UpdateParentForm = "UPDATE_PARENT_FORM",
+}
+
+export interface IUpdateParentFormPayload {
+  value: string;
+  input: string;
 }
 
 export type Mutations = {
   [MutationType.AddChildren](state: State): void;
-  [MutationType.UpdateForm](
+  [MutationType.UpdateParentForm](
     state: State,
-    form: string,
-    input: string,
-    value: string
+    payload: IUpdateParentFormPayload
   ): void;
 };

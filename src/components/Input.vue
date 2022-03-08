@@ -1,13 +1,13 @@
 <template>
   <div class="input-group">
-    <label class="input-group__label" :for="props.id">Имя</label>
+    <label class="input-group__label" :for="props.id">{{ props.label }}</label>
     <input
       :id="props.id"
       class="input-group__input"
       type="text"
       :placeholder="props.placeholder"
       :value="props.modelValue"
-      v-on:input="updateValue($event)"
+      @input="updateValue($event)"
     />
   </div>
 </template>
@@ -17,6 +17,10 @@ import { defineProps, defineEmits } from 'vue'
 
 const props = defineProps({
   id: {
+    type: String,
+    required: true,
+  },
+  label: {
     type: String,
     required: true,
   },
@@ -58,6 +62,9 @@ const updateValue = (e: Event) => {
     color: #111111;
     border: none;
     outline: none;
+  }
+  &:not(:last-child) {
+    margin-bottom: 10px;
   }
 }
 </style>
