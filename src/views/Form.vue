@@ -2,8 +2,8 @@
   <div class="form">
     <h2>Персональные данные</h2>
     <div class="inputs__parent">
-      <Input id="name" label="Имя" placeholder="Введите имя" v-model="name" />
-      <Input id="name" label="Возраст" placeholder="Введите возраст" v-model="age" />
+      <Input id="name" label="Имя" placeholder="Введите имя" v-model="parent.name" />
+      <Input id="age" label="Возраст" placeholder="Введите возраст" v-model="parent.age" />
     </div>
     <div class="heading">
       <h2>Дети (макс. 5)</h2>
@@ -11,55 +11,53 @@
         text="Добавить ребенка"
         outline
         icon
-        @click="store.commit(MutationType.AddChildren)"
+        @click="addChildren"
         v-if="childrens.length < 5"
       />
     </div>
     <div class="inputs__childrens">
-      <div class="inputs__childrens__child" v-for="child in childrens" :key="child.id">
-        <Input id="name" label="Имя" placeholder="Введите имя" v-model="name" />
-        <Input id="name" label="Возраст" placeholder="Введите возраст" v-model="age" />
+      <div class="inputs__childrens__child" v-for="(child, index) in childrens" :key="child.id">
+        <Input id="name" label="Имя" placeholder="Введите имя" v-model="childrens[index].name" />
+        <Input
+          id="age"
+          label="Возраст"
+          placeholder="Введите возраст"
+          v-model="childrens[index].age"
+        />
         <Button text="Удалить" transparent />
       </div>
       <p v-if="childrens.length === 0">Информация о детях еще не добавлена</p>
     </div>
-    <Button text="Сохранить" />
+    <Button text="Сохранить" @click="handleSubmit" />
   </div>
 </template>
 
 <script setup lang="ts">
 import Input from '@/components/Input.vue';
-import { MutationType } from '@/models/storeModel';
+import { IChildren, IParent, MutationType } from '@/models/storeModel';
 import { useStore } from '@/store';
-import { computed } from 'vue';
+import { reactive } from 'vue';
 import Button from '@/components/Button.vue';
 
 const store = useStore();
-const childrens = computed(() => store.state.childrens)
-const name = computed({
-  get() {
-    return store.state.parent.name;
-  },
-  set(value: string) {
-    const payload = {
-      value,
-      input: 'name'
-    }
-    store.commit(MutationType.UpdateParentForm, payload);
-  }
+const parent: IParent = reactive({
+  name: '',
+  age: ''
 });
-const age = computed({
-  get() {
-    return store.state.parent.age;
-  },
-  set(value: string) {
-    const payload = {
-      value,
-      input: 'age'
-    }
-    store.commit(MutationType.UpdateParentForm, payload);
-  }
-});
+const childrens: IChildren[] = reactive([]);
+
+const addChildren = () => {
+  const newChild: IChildren = {
+    id: childrens.length + 1,
+    name: "",
+    age: "",
+  };
+  childrens.push(newChild);
+}
+const handleSubmit = () => {
+  store.commit(MutationType.SetParentForm, parent)
+  store.commit(MutationType.SetChildForm, childrens)
+}
 </script>
 
 <style scoped lang="scss">

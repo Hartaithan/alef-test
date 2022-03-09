@@ -1,23 +1,11 @@
 import { MutationTree } from "vuex";
-import {
-  IChildren,
-  IParent,
-  Mutations,
-  MutationType,
-  State,
-} from "../models/storeModel";
+import { Mutations, MutationType, State } from "../models/storeModel";
 
 export const mutations: MutationTree<State> & Mutations = {
-  [MutationType.AddChildren](state) {
-    const newChild: IChildren = {
-      id: state.childrens.length + 1,
-      name: "",
-      age: "",
-    };
-    state.childrens.push(newChild);
+  [MutationType.SetParentForm](state, value) {
+    state.parent = value;
   },
-  [MutationType.UpdateParentForm](state, payload) {
-    const { value, input } = payload;
-    state.parent[input as keyof IParent] = value;
+  [MutationType.SetChildForm](state, value) {
+    state.childrens = value;
   },
 };

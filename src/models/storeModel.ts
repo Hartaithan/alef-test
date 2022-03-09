@@ -25,19 +25,11 @@ export type State = {
 };
 
 export enum MutationType {
-  AddChildren = "ADD_CHILDREN",
-  UpdateParentForm = "UPDATE_PARENT_FORM",
-}
-
-export interface IUpdateParentFormPayload {
-  value: string;
-  input: string;
+  SetParentForm = "SET_PARENT_FORM",
+  SetChildForm = "SET_CHILD_FORM",
 }
 
 export type Mutations = {
-  [MutationType.AddChildren](state: State): void;
-  [MutationType.UpdateParentForm](
-    state: State,
-    payload: IUpdateParentFormPayload
-  ): void;
+  [MutationType.SetParentForm](state: State, value: IParent): void;
+  [MutationType.SetChildForm](state: State, value: IChildren[]): void;
 };
