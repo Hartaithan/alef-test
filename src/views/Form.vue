@@ -24,7 +24,7 @@
           placeholder="Введите возраст"
           v-model="childrens[index].age"
         />
-        <Button text="Удалить" transparent />
+        <Button text="Удалить" transparent @click="deleteChildren(index)" />
       </div>
       <p v-if="childrens.length === 0">Информация о детях еще не добавлена</p>
     </div>
@@ -50,6 +50,9 @@ const addChildren = () => {
     age: "",
   };
   childrens.push(newChild);
+}
+const deleteChildren = (index: number) => {
+  childrens.splice(index, 1)
 }
 const handleSubmit = () => {
   store.commit(MutationType.SetParentForm, parent)
