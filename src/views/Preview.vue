@@ -1,15 +1,19 @@
 <template>
   <div class="preview">
     <h2>Персональные данные</h2>
-    <PreviewItem type="parent" :value="getValue(parent)" />
+    <PreviewItem v-if="parent.age && parent.name" type="parent" :value="getValue(parent)" />
+    <p class="empty" v-else>Информация о родителе еще не добавлена</p>
     <h2>Дети</h2>
-    <PreviewItem
-      type="child"
-      v-for="child in childrens"
-      :key="child.id"
-      :value="getValue(child)"
-      background
-    />
+    <template v-if="childrens.length > 0">
+      <PreviewItem
+        type="child"
+        v-for="child in childrens"
+        :key="child.id"
+        :value="getValue(child)"
+        background
+      />
+    </template>
+    <p class="empty" v-else>Информация о детях еще не добавлена</p>
   </div>
 </template>
 
@@ -32,6 +36,9 @@ const getValue = (value: IParent | IChildren) => {
 <style scoped lang="scss">
 .preview {
   background: transparent;
+}
+.empty {
+  margin-bottom: 20px;
 }
 h2 {
   font-weight: 500;
