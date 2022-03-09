@@ -8,4 +8,10 @@ export const mutations: MutationTree<State> & Mutations = {
   [MutationType.SetChildForm](state, value) {
     state.childrens = value;
   },
+  [MutationType.InitialiseStore](state) {
+    const persistStore = localStorage.getItem("store");
+    if (persistStore) {
+      this.replaceState(Object.assign(state, JSON.parse(persistStore)));
+    }
+  },
 };

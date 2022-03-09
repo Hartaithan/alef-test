@@ -27,9 +27,11 @@ export type State = {
 export enum MutationType {
   SetParentForm = "SET_PARENT_FORM",
   SetChildForm = "SET_CHILD_FORM",
+  InitialiseStore = "INIT_STORE",
 }
 
 export type Mutations = {
   [MutationType.SetParentForm](state: State, value: IParent): void;
   [MutationType.SetChildForm](state: State, value: IChildren[]): void;
+  [MutationType.InitialiseStore](state: State): void;
 };

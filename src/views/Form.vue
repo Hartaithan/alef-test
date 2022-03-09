@@ -40,11 +40,8 @@ import { reactive } from 'vue';
 import Button from '@/components/Button.vue';
 
 const store = useStore();
-const parent: IParent = reactive({
-  name: '',
-  age: ''
-});
-const childrens: IChildren[] = reactive([]);
+const parent: IParent = reactive(store.state.parent);
+const childrens: IChildren[] = reactive(store.state.childrens);
 
 const addChildren = () => {
   const newChild: IChildren = {
